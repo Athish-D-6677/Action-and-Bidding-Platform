@@ -1,0 +1,279 @@
+/* ── Design System: Paddle & Post ─────────────────────────────────────────── */
+:root {
+  --forest:   #16261F;
+  --forest-80:#1e3329;
+  --cream:    #F3ECDD;
+  --cream-80: #ede4d0;
+  --gold:     #C89B3C;
+  --gold-dark:#a07c2a;
+  --sand:     #D4B896;
+  --sage:     #8FAF8A;
+  --dusty-rose:#C4908A;
+  --powder-blue:#8AAFC4;
+  --red-live: #D94F3D;
+  --green-met:#2D6A4F;
+  --tan-sealed:#B5956A;
+  --text-dark: #1a1a1a;
+  --text-mid:  #555;
+  --text-light:#888;
+  --border:    #e0d8cc;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-pill:999px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.12);
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --font-mono:  'Courier New', 'Courier', monospace;
+  --font-sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+/* ── Typography ─────────────────────────────────────────────────────────────── */
+.display-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--cream);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.lot-meta {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+
+/* ── Status Badges ──────────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.badge-live    { background: var(--red-live);   color: #fff; }
+.badge-reserve { background: var(--green-met);  color: #fff; }
+.badge-sealed  { background: var(--tan-sealed); color: #fff; }
+.badge-dutch   { background: var(--red-live);   color: #fff; }
+.badge-preview { background: var(--powder-blue);color: #fff; }
+.badge-sold    { background: var(--forest);     color: var(--gold); }
+.badge-pending { background: var(--sand);       color: var(--forest); }
+.badge-dot { width:6px; height:6px; border-radius:50%; background:currentColor; animation: pulse 1.4s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+/* ── Lot Number Token ───────────────────────────────────────────────────────── */
+.lot-token {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--forest);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 10px 22px;
+  border: none; border-radius: var(--radius-sm);
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  transition: all .15s ease;
+  text-decoration: none;
+}
+.btn-primary   { background: var(--gold);   color: var(--forest); }
+.btn-primary:hover { background: var(--gold-dark); }
+.btn-dark      { background: var(--forest); color: var(--cream); }
+.btn-dark:hover{ background: var(--forest-80); }
+.btn-outline   { background: transparent; border: 1.5px solid var(--gold); color: var(--gold); }
+.btn-outline:hover { background: var(--gold); color: var(--forest); }
+.btn-danger    { background: var(--red-live); color: #fff; }
+.btn-sm        { padding: 6px 14px; font-size: 0.78rem; }
+.btn-pill      { border-radius: var(--radius-pill); }
+.btn:disabled  { opacity: .5; cursor: not-allowed; }
+
+/* ── Cards ──────────────────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.card-body { padding: 16px; }
+
+/* ── Lot Card ───────────────────────────────────────────────────────────────── */
+.lot-card { cursor: pointer; transition: transform .15s, box-shadow .15s; }
+.lot-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.lot-card-img {
+  width: 100%; aspect-ratio: 4/3; object-fit: cover;
+  background: var(--sand);
+}
+.lot-card-img-placeholder {
+  width: 100%; aspect-ratio: 4/3;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--forest);
+  opacity: .6;
+}
+.lot-card-img-placeholder.sand       { background: var(--sand); }
+.lot-card-img-placeholder.sage       { background: var(--sage); }
+.lot-card-img-placeholder.dusty-rose { background: var(--dusty-rose); }
+.lot-card-img-placeholder.powder-blue{ background: var(--powder-blue); }
+
+/* ── Stat Strip ─────────────────────────────────────────────────────────────── */
+.stat-strip {
+  display: flex; gap: 32px; align-items: flex-end;
+  padding: 20px 0; border-top: 1px solid rgba(255,255,255,.15);
+}
+.stat-item { display: flex; flex-direction: column; gap: 2px; }
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem; font-weight: 700;
+  color: var(--cream); line-height: 1;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--gold);
+}
+
+/* ── Divider ────────────────────────────────────────────────────────────────── */
+.divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+/* ── Form ───────────────────────────────────────────────────────────────────── */
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-label { font-size: 0.8rem; font-weight: 600; color: var(--text-mid); }
+.form-input {
+  padding: 10px 12px; border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 0.9rem;
+  background: #fff; transition: border-color .15s;
+}
+.form-input:focus { outline: none; border-color: var(--gold); }
+.form-error { font-size: 0.75rem; color: var(--red-live); }
+
+/* ── Layout ─────────────────────────────────────────────────────────────────── */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-center  { display: flex; justify-content: center; align-items: center; }
+.gap-8  { gap: 8px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+
+/* ── Sidebar Nav (dark forest) ──────────────────────────────────────────────── */
+.sidebar {
+  width: 240px; min-height: 100vh;
+  background: var(--forest);
+  padding: 24px 0; display: flex; flex-direction: column;
+  flex-shrink: 0;
+}
+.sidebar-logo {
+  padding: 0 20px 24px;
+  font-family: var(--font-serif);
+  font-size: 1.2rem; color: var(--cream);
+  border-bottom: 1px solid rgba(255,255,255,.1);
+}
+.sidebar-logo span { color: var(--gold); }
+.sidebar-nav { padding: 16px 0; flex: 1; }
+.sidebar-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 20px;
+  color: rgba(243,236,221,.7);
+  text-decoration: none; font-size: 0.85rem;
+  transition: all .15s;
+}
+.sidebar-link:hover, .sidebar-link.active {
+  background: rgba(200,155,60,.15);
+  color: var(--gold);
+}
+.sidebar-link.active { border-left: 3px solid var(--gold); }
+
+/* ── Countdown Timer ────────────────────────────────────────────────────────── */
+.countdown {
+  font-family: var(--font-mono);
+  font-size: 2.5rem; font-weight: 700;
+  color: var(--gold); letter-spacing: .05em;
+}
+.countdown.urgent { color: var(--red-live); animation: pulse 1s infinite; }
+
+/* ── Bid Feed ───────────────────────────────────────────────────────────────── */
+.bid-feed { display: flex; flex-direction: column; gap: 8px; }
+.bid-feed-item {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 12px; border-radius: var(--radius-sm);
+  background: rgba(243,236,221,.5); font-size: 0.82rem;
+  animation: slideIn .3s ease;
+}
+.bid-feed-item.winning { background: rgba(45,106,79,.1); border-left: 3px solid var(--green-met); }
+@keyframes slideIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
+
+/* ── Dev Footer ─────────────────────────────────────────────────────────────── */
+.dev-footer {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 6px 24px;
+  background: rgba(22,38,31,.92); backdrop-filter: blur(4px);
+  font-family: var(--font-mono); font-size: 0.6rem;
+  color: rgba(243,236,221,.5); letter-spacing: .08em;
+  z-index: 9999; pointer-events: none;
+}
+
+/* ── Table ──────────────────────────────────────────────────────────────────── */
+.table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.table th {
+  text-align: left; padding: 10px 12px;
+  font-family: var(--font-mono); font-size: 0.65rem;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--text-mid); border-bottom: 2px solid var(--border);
+}
+.table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.table tr:hover td { background: rgba(200,155,60,.05); }
+
+/* ── Tabs ───────────────────────────────────────────────────────────────────── */
+.tabs { display: flex; gap: 0; border-bottom: 2px solid var(--border); }
+.tab-btn {
+  padding: 10px 18px; background: none; border: none;
+  font-size: 0.82rem; font-weight: 600; cursor: pointer;
+  color: var(--text-mid); border-bottom: 2px solid transparent;
+  margin-bottom: -2px; transition: all .15s;
+}
+.tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--sand); border-radius: 3px; }
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .sidebar { display: none; }
+  .grid-4, .grid-3 { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+  .stat-strip { gap: 16px; flex-wrap: wrap; }
+}
